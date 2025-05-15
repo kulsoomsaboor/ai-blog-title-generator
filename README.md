@@ -1,1 +1,1 @@
-AI Blog Title Generator
+## Blog Title Generator
