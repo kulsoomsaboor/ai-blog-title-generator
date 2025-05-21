@@ -26,7 +26,10 @@ async def generate_titles( prompt_content: str ) -> list:
         ]
     )
     
-    return response.choices[0].message.content.split('\n')
+    titles_raw = response.choices[0].message.content.strip().split("\n")
+    titles = [title.lstrip("1234567890. ").strip('"') for title in titles_raw]
+    return { "titles": titles}
+
 
 
 
