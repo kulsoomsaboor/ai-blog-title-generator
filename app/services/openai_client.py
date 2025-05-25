@@ -4,14 +4,10 @@ import os
 from openai import OpenAI
 from app.utils import build_prompt
 
-
-
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 
 client = OpenAI()
-
-
 
 async def generate_titles( prompt_content: str ) -> list:
     refined_prompt=build_prompt(prompt_content)

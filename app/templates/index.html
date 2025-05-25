@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="blogForm" method="post">
+    <textarea id="blogContent"></textarea>
+    <br>
+    <button type="submit">Generate Titles</button>
+    
+    
+
+    </form>
+    <script>
+        const form = document.getElementById("blogForm");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const blogContent = document.getElementById("blogContent").value;
+
+            fetch("http://127.0.0.1:8000/generate-titles", {
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({prompt:blogContent})
+            })
+
+            .then(response => response.json())
+            .then(data => {
+                console.log("Server said:", data);
+                // alert("Titles received: " + JSON.stringify(data.titles, null, 2));
+
+                })
+                
+
+            .catch(error => {
+                console.error("Something went wrong:", error);
+                alert("Failed to submit.");
+                });
+
+                });
+    </script>
+</body>
+</html>

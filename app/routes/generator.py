@@ -8,11 +8,8 @@ from fastapi import HTTPException
 from fastapi.responses import JSONResponse
 
 
-
 router = APIRouter()
 
-
-    
 
 @router.get("/")
 def read_root():
