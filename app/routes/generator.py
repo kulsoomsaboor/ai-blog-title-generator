@@ -25,6 +25,7 @@ async def generate_reponse(blog: BlogContent):
       
 
         logger.info(f"Generated titles: {titles}")
-        return {"titles": titles}
+        return {"titles": titles["titles"]}
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
