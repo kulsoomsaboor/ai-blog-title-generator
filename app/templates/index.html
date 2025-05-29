@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
     <form id="blogForm" method="post">
     <textarea id="blogContent"></textarea>
     <br>
     <button type="submit">Generate Titles</button>
+
+    <br>
+    <div id="titlesContainer">
+        <h2>Generated Titles:</h2>
+        </div>
     
     
 
@@ -30,10 +37,15 @@
 
             .then(response => response.json())
             .then(data => {
-                console.log("Server said:", data);
-                // alert("Titles received: " + JSON.stringify(data.titles, null, 2));
+            const container = document.getElementById("titlesContainer");
+            container.innerHTML = ""; // Clear old results
 
-                })
+            data.titles.titles.forEach(title => {
+                const titleElement = document.createElement("p");
+                titleElement.textContent = title;
+                container.appendChild(titleElement);
+            });
+            })
                 
 
             .catch(error => {
