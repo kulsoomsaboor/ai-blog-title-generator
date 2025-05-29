@@ -1,4 +1,5 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
+
 
 from app.models.blog import BlogContent      
 from app.services.openai_client import generate_titles
@@ -7,15 +8,20 @@ from openai import OpenAIError
 from fastapi import HTTPException
 from fastapi.responses import JSONResponse
 
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
+
 import logging
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
 
 
-@router.get("/")
-def read_root():
-    return {"message": "Blog Title Generator API"}
+templates = Jinja2Templates(directory="app/templates")
+
+@router.get("/", response_class=HTMLResponse)
+def read_root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 @router.post("/generate-titles")
 async def generate_reponse(blog: BlogContent):

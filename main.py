@@ -2,12 +2,18 @@ from fastapi import FastAPI
 from app.routes import generator
 from fastapi.middleware.cors import CORSMiddleware
 
+
 import logging
+
+from fastapi.staticfiles import StaticFiles 
+
 
 logging.basicConfig(
     level=logging.INFO)
 
 app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 app.add_middleware(
     CORSMiddleware,

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/static/styles.css">
 
 </head>
 <body>
@@ -27,7 +27,7 @@
             e.preventDefault();
             const blogContent = document.getElementById("blogContent").value;
 
-            fetch("http://127.0.0.1:8000/generate-titles", {
+            fetch("/generate-titles", {
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"
