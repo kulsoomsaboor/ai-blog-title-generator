@@ -2,6 +2,10 @@ from fastapi import FastAPI
 from app.routes import generator
 from fastapi.middleware.cors import CORSMiddleware
 
+import logging
+
+logging.basicConfig(
+    level=logging.INFO)
 
 app = FastAPI()
 
