@@ -40,7 +40,7 @@
             const container = document.getElementById("titlesContainer");
             container.innerHTML = ""; // Clear old results
 
-            data.titles.titles.forEach(title => {
+            data.titles.forEach(title => {
                 const titleElement = document.createElement("p");
                 titleElement.textContent = title;
                 container.appendChild(titleElement);
